@@ -4,58 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>璃海社团及工作室官网</title>
+    <title>璃海</title>
     <link rel="icon" type="image/jpg" href="img/璃海社团.png" />
     <link rel="stylesheet" type="text/css" href="css/head.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
 </head>
-</head>
 
 <body>
+    <div class="header">
+        <div>
+            <img src="img/璃海社团.png" alt="璃海社团" class="img-top-left">
+            <img src="img/Ultroveritas.png" alt="图片" class="img-top-right">
+        </div>
+        <h1>璃海社团</h1>
+        <h3>GensouEdge</h3>
+    </div>
+    <div class="topnav" id="nav">
+        <a href="/" data-page="home">首页</a>
+        <a href="#products" data-page="products">制品</a>
+        <a href="#project" data-page="project">项目企划</a>
+        <a href="#join" data-page="join">招募</a>
+        <a href="#about" data-page="about">关于</a>
+        <!-- 搜索表单 -->
+        <form id="search-form" class="search-form" role="search">
+            <input id="search-input" class="search-input" type="search" placeholder="搜索站内文字..." aria-label="搜索站内">
+            <button id="search-btn" class="search-btn" type="submit">搜索</button>
+        </form>
+    </div>
 
-     <div class="header">
-            <div class="title-box">
-                <span class="title-span-1">
-                    <h1>璃海社团</h1>
-                </span>
+    <div id="content-container">
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card">
+                </div>
             </div>
-            <div class="title-box">
-                <span class="title-span-2">
-                    <h1 class="text">Riheria Club</h1>
-                </span>
+            <div class="rightcolumn">
+                <div class="card">
+                    <h1>加入我们</h1>
+                    <p>Q群：687181637</p>
+                    <p>电子邮箱：GensouEdge@163.com</p>
+                    <p>我们需要画师、程序（非专业业余爱好者即可）等加入工作组。详情请见<a href="#join">招募</a></p>
+                    <p>欢迎各位爱好者围观</p>
+                </div>
+                <div class="card">过去的就是将来的，已经做的就是将来要做的；太阳底下没有什么新鲜事。</div>
+                <div class="card">
+                    <h1>本社团相关页面</h1>
+                    <div>
+                        <a href="https://touhou.review/%E5%B9%BB%E6%83%B3%E8%BE%B9%E5%A2%83" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="img/THBWiki.png" alt="THBWiki" style="width:30%; border-radius:8px;">
+                        </a>
+                        <a href="https://github.com/GensouEdge" target="_blank" rel="noopener noreferrer">
+                            <img src="img/github-logo.png" alt="github" style="width:10%; border-radius:8px;">
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="title-box-large">
-                <span class="title-span-3">
-                    <h1 class="text1">Ultroveritas Studio</h1>
-                </span>
-            </div>
-            </div>
+        </div>
+    </div>
 
-
-                <img src="img/璃海社团.png" alt="璃海社团" class="img-top-left">
-                <img src="img/Ultroveritas.png" alt="图片" class="img-top-right">
-
-
-
-            <div class="topnav" id="nav">
-                <a href="/" data-page="home">本站首页</a>
-                <a href="#products" data-page="products">旧日回忆</a>
-                <a href="#project" data-page="project">社团计划</a>
-                <a href="#join" data-page="join">成员招募</a>
-                <a href="#about" data-page="about">关于我们</a>
-                <!-- 搜索表单 -->
-                <form id="search-form" class="search-form" role="search">
-                    <input id="search-input" class="search-input" type="search" placeholder="站内搜索..." aria-label="站内搜索">
-                    <button id="search-btn" class="search-btn" type="submit">搜索</button>
-                </form>
-            </div>
-            <div id="content-container">
-            </div>
-            <div class="footer">
-            © 2025 璃海社团|ULTROVERITAS STUDIO </div>
-                    <script src="js/application.js"></script>
-                    <script src="js/banner.js"></script>
-                    <script src="js/htmlRouter.js"></script>
+    <div class="footer">
+        <p>© 2025 璃海社团</p>
+    </div>
+    <script src="js/application.js"></script>
+    <script src="js/banner.js"></script>
+    <script src="js/htmlRouter.js"></script>
 </body>
 
 </html>
