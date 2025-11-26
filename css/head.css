@@ -479,3 +479,69 @@ a.active {
 .btn-primary:hover {
     background: var(--brand-colour);
 }
+
+/* --- 来自 inline-styles.css 的提取样式（合并） --- */
+/* 提取的内联样式 */
+/* 原 head 中的通用 div 样式（保留原始优先级） */
+div {
+    font-size: 20px;
+    font-family: "FZYaoTi";
+    color: #960000;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 10;
+}
+
+/* 原来内嵌的文本类 */
+.text {
+    font-family: "STZhongsong";
+    font-size: 20px;
+    height: 100px;
+    top: 10px;
+}
+.text1 {
+    font-family: "STZhongsong";
+    font-size: 15px;
+    height: 40px;
+    top: 20px;
+}
+
+/* 替换原先行内定位的标题容器和定位 span */
+.title-box {
+    position: relative;
+    width: 300px;
+    height: 100px;
+}
+.title-box-large {
+    position: relative;
+    width: 300px;
+    height: 130px;
+}
+.title-span-1,
+.title-span-2,
+.title-span-3 {
+    position: absolute;
+    border: 1px solid transparent; /* 保持原来写的 border:1px; 不影响布局 */
+}
+.title-span-1 { top: -10px; left: 120px; }
+.title-span-2 { top: -40px; left: 125px; }
+.title-span-3 { top: -135px; left: 1280px; }
+
+/* 提取的图片定位 */
+.img-top-left {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    width: 7%;
+    height: auto;
+}
+.img-top-right {
+    position: absolute;
+    top: 10px;
+    left: 1330px;
+    width: 7%;
+    height: auto;
+}
+
+/* 保留已有的 top-left/top-right 类兼容性 */
+
