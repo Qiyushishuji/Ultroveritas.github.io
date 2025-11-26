@@ -48,6 +48,7 @@ a {
 
 /* 头部标题 */
 .header {
+    height: 150px;
     padding: 30px;
     text-align: left;
     background: #e8e8e8;
