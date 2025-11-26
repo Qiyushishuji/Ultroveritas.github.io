@@ -5,13 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function stripText(html) {
         const tmp = document.createElement('div');
         tmp.innerHTML = html;
-        // 从索引中排除显式标记为不被索引的节点：
-        // - 带有 `data-noindex` 属性或类名 `noindex`
-        try {
-            tmp.querySelectorAll('[data-noindex], .noindex').forEach(n => n.remove());
-        } catch (e) {
-            // 容错：若发生异常则继续使用未修改的 tmp
-        }
         return (tmp.textContent || '').replace(/\s+/g, ' ').trim();
     }
 
@@ -31,13 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .map(a => ({ key: a.getAttribute('data-page'), name: a.textContent && a.textContent.trim() }))
         .filter(x => x.key)
         .reduce((m, x) => { m[x.key] = x.name; return m; }, {});
-
-    // 页面关键词映射：当搜索框输入这些关键词时直接跳转到对应页面（页面位于 `pages/<page>.html`）
-    // 请把关键词以小写形式添加为 key，值为页面的 data-page key（不带扩展名）
-    const hiddenPageKeywords = {
-        'secret': 'join',
-        '秘密': 'join',
-    };
 
     let activePage = 'home';
 
@@ -117,24 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
     async function performSearch(query) {
         const q = (query || '').trim().toLowerCase();
         if (!q) return;
-        // 支持关键词跳转到隐藏页面：优先精确匹配，若无则尝试匹配第一个 token
-        const firstToken = q.split(/\s+/)[0];
-        const targetPage = hiddenPageKeywords[q] || hiddenPageKeywords[firstToken];
-        if (targetPage) {
-            // 显示提示后短暂延迟再跳转，以便用户看到反馈
-            showNotice('已识别隐藏关键词，正在跳转…');
-            const delay = 100; // ms
-            setTimeout(() => {
-                if (targetPage === 'home') {
-                    history.pushState(null, '', window.location.pathname + window.location.search);
-                    loadPage('home');
-                } else {
-                    // 使用 hash 导航以保持应用路由的一致性
-                    window.location.hash = targetPage;
-                }
-            }, delay);
-            return;
-        }
         await ensureAllPagesCached();
         const results = [];
         for (const [page, data] of Object.entries(pageCache)) {
@@ -187,66 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.appendChild(card);
         });
         container.appendChild(wrapper);
-    }
-
-    // 在文档中显示一个短暂的提示（toast），用于提示用户识别到隐藏关键词
-    function showNotice(message, duration = 1000) {
-        try {
-            const existing = document.getElementById('hidden-keyword-notice');
-            if (existing) existing.remove();
-            const notice = document.createElement('div');
-            notice.id = 'hidden-keyword-notice';
-            notice.textContent = message;
-            // 在移动端（小屏幕）显示为底部居中、加大字号，桌面端保持右上小提示
-            const isMobile = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width:600px)').matches;
-            if (isMobile) {
-                Object.assign(notice.style, {
-                    position: 'fixed',
-                    left: '50%',
-                    bottom: '20px',
-                    transform: 'translateX(-50%)',
-                    background: 'rgba(34,34,34,0.97)',
-                    color: '#fff',
-                    padding: '12px 16px',
-                    borderRadius: '8px',
-                    zIndex: 2147483647,
-                    boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
-                    opacity: '0',
-                    transition: 'opacity 180ms ease-in-out, transform 180ms ease-in-out',
-                    fontSize: '16px',
-                    maxWidth: 'calc(100% - 32px)',
-                    textAlign: 'center',
-                    touchAction: 'manipulation'
-                });
-                // 移动端适当延长默认可见时长
-                duration = Math.max(duration, 1200);
-            } else {
-                Object.assign(notice.style, {
-                    position: 'fixed',
-                    right: '16px',
-                    top: '16px',
-                    background: 'rgba(34,34,34,0.95)',
-                    color: '#fff',
-                    padding: '10px 14px',
-                    borderRadius: '6px',
-                    zIndex: 9999,
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
-                    opacity: '0',
-                    transition: 'opacity 150ms ease-in-out',
-                    fontSize: '14px'
-                });
-            }
-            document.body.appendChild(notice);
-            // 触发过渡
-            requestAnimationFrame(() => { notice.style.opacity = '1'; if (isMobile) notice.style.transform = 'translateX(-50%) translateY(0)'; });
-            setTimeout(() => {
-                notice.style.opacity = '0';
-                if (isMobile) notice.style.transform = 'translateX(-50%) translateY(6px)';
-                setTimeout(() => { if (notice.parentNode) notice.parentNode.removeChild(notice); }, 220);
-            }, duration);
-        } catch (e) {
-            // 容错：若 DOM 操作失败则忽略
-        }
     }
 
     // 搜索表单事件绑定
