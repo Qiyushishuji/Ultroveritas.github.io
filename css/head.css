@@ -61,7 +61,6 @@ a {
     background-color: #960000;
     color: whitesmoke;
     position: relative;
-    top: -620px;
 }
 
 /* 导航条链接 */
@@ -233,7 +232,7 @@ a.active {
     flex-wrap: wrap;
     justify-content: center;
     gap: 50px;
-    background-color: white;
+    background-color: red;
     padding: 200px;
     border-radius: 4px;
 }
