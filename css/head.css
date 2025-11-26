@@ -1,6 +1,6 @@
 /* 使用根部节点托管颜色，随便改 */
 :root {
-    --brand-colour:white;
+    --brand-colour: white;
     --brand-active: #d39d9d;
     --accent-colour: #d39d9d;
     --text-colour: #960000;
@@ -24,7 +24,9 @@ body {
     padding: 10px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: "FZYaoTi", serif;
     font-weight: 700;
     letter-spacing: 0.3px;
@@ -56,8 +58,8 @@ a {
 .topnav {
     display: flex;
     flex-wrap: wrap;
-    background-color:#960000;
-    color:whitesmoke;
+    background-color: #960000;
+    color: whitesmoke;
     position: relative;
     top: -620px;
 }
@@ -88,27 +90,35 @@ a {
     gap: 8px;
     margin-left: 8px;
 }
+
 .search-input {
     padding: 8px 12px;
     border-radius: 20px;
     /* 未聚焦时有明显边框和微弱背景，以便在导航条上可辨识 */
-    border: 3px solid #fff; /* 边框 */
+    border: 3px solid #fff;
+    /* 边框 */
     font-family: "STZhongsong", sans-serif;
-    background: rgba(255,45,149,0.06);
+    background: rgba(255, 45, 149, 0.06);
     font-weight: 700;
     min-width: 180px;
-    color:white; /* 未聚焦时文字为白色 */
+    color: white;
+    /* 未聚焦时文字为白色 */
 }
+
 .search-input::placeholder {
-    color: rgba(255,255,255,0.75);
+    color: rgba(255, 255, 255, 0.75);
 }
+
 .search-input:focus {
     outline: none;
-    box-shadow: 0 6px 0 rgba(11,11,11,0.06);
-    background: #ffffff; /* 焦点时显示白色背景，增强可见性 */
-    color: #0b0b0b; /* 聚焦时文字改为深色，保证可读性 */
-    border-color:white; 
+    box-shadow: 0 6px 0 rgba(11, 11, 11, 0.06);
+    background: #ffffff;
+    /* 焦点时显示白色背景，增强可见性 */
+    color: #0b0b0b;
+    /* 聚焦时文字改为深色，保证可读性 */
+    border-color: white;
 }
+
 .search-btn {
     background: var(--brand-colour);
     color: #960000;
@@ -119,7 +129,10 @@ a {
     font-weight: 700;
     cursor: pointer;
 }
-.search-btn:hover { transform: translateY(-2px); }
+
+.search-btn:hover {
+    transform: translateY(-2px);
+}
 
 /* 搜索结果 */
 .search-results {
@@ -127,10 +140,26 @@ a {
     flex-direction: column;
     gap: 12px;
 }
-.search-results .card { border-style: solid; border-color: var(--border-colour); }
-.search-results .card h2 { margin-bottom: 8px; }
-.search-results .card p { color: var(--muted-text); }
-.search-no-results { padding: 24px; text-align: center; color: var(--muted-text); }
+
+.search-results .card {
+    border-style: solid;
+    border-color: var(--border-colour);
+}
+
+.search-results .card h2 {
+    margin-bottom: 8px;
+}
+
+.search-results .card p {
+    color: var(--muted-text);
+}
+
+.search-no-results {
+    padding: 24px;
+    text-align: center;
+    color: var(--muted-text);
+}
+
 /* 导航栏链接选中 */
 a.active {
     background-color: var(--brand-active);
@@ -152,6 +181,7 @@ a.active {
     flex-direction: column;
     gap: 20px;
 }
+
 .rightcolumn {
     flex: 1 1 300px;
     display: flex;
@@ -169,14 +199,17 @@ a.active {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     gap: 10px;
 }
+
 .card p {
     color: var(--text-colour);
 }
+
 .card:hover {
     transform: translateY(-1px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: 0.3s ease;
 }
+
 .card.visible {
     opacity: 1;
     transform: translateY(0);
@@ -314,6 +347,7 @@ a.active {
 
 /* 响应式：平板及以下（max-width: 900px） */
 @media (max-width: 900px) {
+
     .leftcolumn,
     .rightcolumn {
         flex: 1 1 100%;
@@ -339,10 +373,14 @@ a.active {
     }
 
     .banner-container {
-        width: 80%; /* 宽度不超过80% */
-        height: auto; /* 高度自适应 */
-        aspect-ratio: 1 / 1; /* 宽高比1:1，形成正方形 */
-        max-width: 400px; /* 设置最大宽度避免过大 */
+        width: 80%;
+        /* 宽度不超过80% */
+        height: auto;
+        /* 高度自适应 */
+        aspect-ratio: 1 / 1;
+        /* 宽高比1:1，形成正方形 */
+        max-width: 400px;
+        /* 设置最大宽度避免过大 */
         border-radius: 8px;
     }
 
@@ -360,7 +398,8 @@ a.active {
     /* 移动端：搜索区域占满整行，输入与按钮同行紧凑布局 */
     .search-form {
         flex-direction: row;
-        align-items: stretch; /* 让子元素拉伸以匹配高度 */
+        align-items: stretch;
+        /* 让子元素拉伸以匹配高度 */
         gap: 0;
         margin-left: 0;
         width: 100%;
@@ -370,13 +409,14 @@ a.active {
         flex: 1 1 auto;
         min-width: 0;
         box-sizing: border-box;
-        height: 44px; /* 统一高度，符合触控目标 */
+        height: 44px;
+        /* 统一高度，符合触控目标 */
         padding: 8px 12px;
         /* 保持与 PC 端一致的配色，右侧去掉边框以与按钮无缝衔接 */
         border: 3px solid #fff;
         border-right: 0;
         border-radius: 20px 0 0 20px;
-        background: rgba(255,45,149,0.06);
+        background: rgba(255, 45, 149, 0.06);
         color: #ffffff;
         font-weight: 700;
         display: flex;
@@ -384,12 +424,12 @@ a.active {
     }
 
     .search-input::placeholder {
-        color: rgba(255,255,255,0.75);
+        color: rgba(255, 255, 255, 0.75);
     }
 
     .search-input:focus {
         outline: none;
-        box-shadow: 0 6px 0 rgba(11,11,11,0.06);
+        box-shadow: 0 6px 0 rgba(11, 11, 11, 0.06);
         background: #ffffff;
         color: #0b0b0b;
         border-color: #00d4ff;
@@ -399,8 +439,10 @@ a.active {
     .search-btn {
         flex: 0 0 auto;
         box-sizing: border-box;
-        height: 44px; /* 与输入框对齐 */
-        padding: 0 14px; /* 竖向由 height 控制，左右保留内边距 */
+        height: 44px;
+        /* 与输入框对齐 */
+        padding: 0 14px;
+        /* 竖向由 height 控制，左右保留内边距 */
         border-radius: 0 20px 20px 0;
         background: #666;
         color: #fff;
@@ -434,7 +476,7 @@ a.active {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     z-index: 1;
 }
 
@@ -447,20 +489,21 @@ a.active {
     font-size: 3em;
     margin-bottom: .5em;
     text-shadow:
-    0 0 10px rgba(0,0,0,0.8),
-    0 0 20px rgba(0,0,0,0.6),
-    0 0 40px rgba(0,0,0,0.4),
-    0 0 80px rgba(0,0,0,0.2);
+        0 0 10px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(0, 0, 0, 0.2);
 }
 
 .heroimg {
     position: absolute;
     inset: 0;
     overflow: hidden;
-    border-radius: 0; /* Hero 不需要圆角 */
+    border-radius: 0;
+    /* Hero 不需要圆角 */
 }
 
-  /* 背景图像 */
+/* 背景图像 */
 .heroimg img {
     width: 100%;
     height: 100%;
@@ -499,6 +542,7 @@ div {
     height: 100px;
     top: 10px;
 }
+
 .text1 {
     font-family: "STZhongsong";
     font-size: 15px;
@@ -512,20 +556,35 @@ div {
     width: 300px;
     height: 100px;
 }
+
 .title-box-large {
     position: relative;
     width: 300px;
     height: 130px;
 }
+
 .title-span-1,
 .title-span-2,
 .title-span-3 {
     position: absolute;
-    border: 1px solid transparent; /* 保持原来写的 border:1px; 不影响布局 */
+    border: 1px solid transparent;
+    /* 保持原来写的 border:1px; 不影响布局 */
 }
-.title-span-1 { top: -10px; left: 120px; }
-.title-span-2 { top: -40px; left: 125px; }
-.title-span-3 { top: -135px; left: 1280px; }
+
+.title-span-1 {
+    top: -10px;
+    left: 120px;
+}
+
+.title-span-2 {
+    top: -40px;
+    left: 125px;
+}
+
+.title-span-3 {
+    top: -135px;
+    left: 1280px;
+}
 
 /* 提取的图片定位 */
 .img-top-left {
@@ -535,6 +594,7 @@ div {
     width: 7%;
     height: auto;
 }
+
 .img-top-right {
     position: absolute;
     top: 10px;
@@ -544,4 +604,3 @@ div {
 }
 
 /* 保留已有的 top-left/top-right 类兼容性 */
-
