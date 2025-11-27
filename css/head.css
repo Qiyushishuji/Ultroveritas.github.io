@@ -204,6 +204,11 @@ a.active {
     color: var(--text-colour);
 }
 
+/* 段落首行缩进：2 个字符宽度 */
+p {
+    text-indent: 2ch;
+}
+
 .card:hover {
     transform: translateY(-1px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
